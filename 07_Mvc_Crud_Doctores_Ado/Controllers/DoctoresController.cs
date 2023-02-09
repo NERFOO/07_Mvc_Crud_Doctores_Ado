@@ -54,5 +54,20 @@ namespace _07_Mvc_Crud_Doctores_Ado.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public IActionResult Update(string doctorNum)
+        {
+            Doctor doctor = this.repo.FindDoctor(doctorNum);
+
+            return View(doctor);
+        }
+
+        [HttpPost]
+        public IActionResult Update(Doctor doctor)
+        {
+            this.repo.UpdateDoctor(doctor.HospitalCod, doctor.Apellido, doctor.Especialidad, doctor.Salario, doctor.DoctorNum);
+
+            return RedirectToAction("Index");
+        }
     }
 }

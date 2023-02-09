@@ -148,12 +148,36 @@ namespace _07_Mvc_Crud_Doctores_Ado.Repositories
             this.command.Parameters.Clear();
         }
 
-
         public void DeleteDoctores(string doctorNum)
         {
             string consulta = "DELETE FROM DOCTOR WHERE DOCTOR_NO = @DOCTORNUM";
 
             SqlParameter paramDoctorNum = new SqlParameter("@DOCTORNUM", doctorNum);
+            this.command.Parameters.Add(paramDoctorNum);
+
+            this.command.CommandType = CommandType.Text;
+            this.command.CommandText = consulta;
+
+            this.connection.Open();
+            this.command.ExecuteNonQuery();
+
+            this.connection.Close();
+            this.command.Parameters.Clear();
+        }
+
+        public void UpdateDoctor(string hospitalCod, string apellido, string especialidad, int salario, string doctorNum)
+        {
+            string consulta = "UPDATE DOCTOR SET HOSPITAL_COD = @IDHOSPITAL, APELLIDO = @APELLIDO, ESPECIALIDAD = @ESPECIALIDAD, SALARIO = @SALARIO WHERE DOCTOR_NO = @DOCTORNUM";
+
+            SqlParameter paramHospitalCod = new SqlParameter("@IDHOSPITAL", hospitalCod);
+            SqlParameter paramApellido = new SqlParameter("@APELLIDO", apellido);
+            SqlParameter paramEspecialidad = new SqlParameter("@ESPECIALIDAD", especialidad);
+            SqlParameter paramSalario = new SqlParameter("@SALARIO", salario);
+            SqlParameter paramDoctorNum = new SqlParameter("@DOCTORNUM", doctorNum);
+            this.command.Parameters.Add(paramHospitalCod);
+            this.command.Parameters.Add(paramApellido);
+            this.command.Parameters.Add(paramEspecialidad);
+            this.command.Parameters.Add(paramSalario);
             this.command.Parameters.Add(paramDoctorNum);
 
             this.command.CommandType = CommandType.Text;
