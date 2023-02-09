@@ -2,10 +2,10 @@
 {
     public class Hospital
     {
-        public int HospitalCod { get; set; }
+        public string HospitalCod { get; set; }
         public string Nombre { get; set; }
         public string Direccion { get; set; }
         public string Telefono { get; set; }
-        public int NumCama { get; set; }
+        public string NumCama { get; set; }
     }
 }

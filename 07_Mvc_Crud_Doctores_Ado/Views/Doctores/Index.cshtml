@@ -11,6 +11,7 @@
                 <th>Apellido</th>
                 <th>Especialidad</th>
                 <th>Salario</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -21,6 +22,10 @@
                     <td>@doc.Apellido</td>
                     <td>@doc.Especialidad</td>
                     <td>@doc.Salario</td>
+                    <td>
+                        @Html.ActionLink("Details", "Details", "Doctores", new{ doctorNum = doc.DoctorNum }) |
+                        @Html.ActionLink("Delete", "Delete", "Doctores", new{ doctorNum = doc.DoctorNum }) | 
+                    </td>
                 </tr>
             }
         </tbody>

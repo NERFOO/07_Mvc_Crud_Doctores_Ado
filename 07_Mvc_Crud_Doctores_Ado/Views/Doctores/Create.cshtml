@@ -1,8 +1,37 @@
-﻿
+﻿@model List<Doctor>
+
+@{
+    List<Hospital> hospitales = ViewData["Hospitales"] as List<Hospital>;
+    string max = ViewData["Max"] as string;
+}
+
 <h1>Crear Doctor</h1>
 
 <form method="post">
-    <select name="hospitalName">
-        <option></option>
+    <label>Hospital</label>
+    <select name="hospitalCod" class="form-select">
+        @foreach(Hospital hospi in hospitales)
+        {
+            <option value="@hospi.HospitalCod">@hospi.Nombre</option>
+        }
     </select>
+
+    <label>Numero del doctor</label>
+    <input type="text" name="doctorNum" class="form-control" value="@max" />
+
+    <label>Apellido</label>
+    <input type="text" name="apellido" class="form-control" />
+    
+    <label>Especialidad</label>
+    <select name="especialidad" class="form-select">
+        @foreach (Doctor doc in Model)
+        {
+                <option value="@doc.Especialidad">@doc.Especialidad</option>
+        }
+    </select>
+
+    <label>Salario</label>
+    <input type="number" name="salario" class="form-control" />
+
+    <button type="submit" class="btn btn-success">Crear doctor</button>
 </form>
