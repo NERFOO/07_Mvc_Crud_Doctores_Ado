@@ -1,0 +1,28 @@
+﻿@model List<Doctor>
+
+<h1>Vista inicial Doctores</h1>
+
+@if(Model !=  null) {
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Hospital Cod</th>
+                <th>Num Doctor</th>
+                <th>Apellido</th>
+                <th>Especialidad</th>
+                <th>Salario</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(Doctor doc in Model) {
+                <tr>
+                    <td>@doc.HospitalCod</td>
+                    <td>@doc.DoctorNum</td>
+                    <td>@doc.Apellido</td>
+                    <td>@doc.Especialidad</td>
+                    <td>@doc.Salario</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
